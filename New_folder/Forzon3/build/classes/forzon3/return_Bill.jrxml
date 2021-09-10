@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d885120-4258-4fd3-97fd-2b7ce1547129">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="153"/>
+	<parameter name="invoice_no" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     inflow_sell.`Order_Id` AS inflow_sell_Order_Id,
+     inflow_sell.`user_id` AS inflow_sell_user_id,
+     inflow_sell.`name` AS inflow_sell_name,
+     inflow_sell.`Total` AS inflow_sell_Total,
+     inflow_sell.`Sum` AS inflow_sell_Sum,
+     inflow_sell.`percentage` AS inflow_sell_percentage,
+     inflow_sell.`date` AS inflow_sell_date,
+     inflow_sell.`pay` AS inflow_sell_pay,
+     inflow_sell_information.`Order_id` AS inflow_sell_information_Order_id,
+     inflow_sell_information.`item_code` AS inflow_sell_information_item_code,
+     inflow_sell_information.`item_name` AS inflow_sell_information_item_name,
+     inflow_sell_information.`quality` AS inflow_sell_information_quality,
+     inflow_sell_information.`Amount` AS inflow_sell_information_Amount,
+     inflow_sell_information.`price` AS inflow_sell_information_price,
+     inflow_sell_information.`return_quantity` AS inflow_sell_information_return_quantity
+FROM
+     `inflow_sell` inflow_sell INNER JOIN
+     `inflow_sell_information` inflow_sell_information ON
+inflow_sell.`Order_Id`=  inflow_sell_information.`Order_id`
+where inflow_sell.`Order_Id`=$P{invoice_no}]]>
+	</queryString>
+	<field name="inflow_sell_Order_Id" class="java.lang.Integer"/>
+	<field name="inflow_sell_user_id" class="java.lang.String"/>
+	<field name="inflow_sell_name" class="java.lang.String"/>
+	<field name="inflow_sell_Total" class="java.lang.Integer"/>
+	<field name="inflow_sell_Sum" class="java.lang.Integer"/>
+	<field name="inflow_sell_percentage" class="java.lang.Integer"/>
+	<field name="inflow_sell_date" class="java.sql.Date"/>
+	<field name="inflow_sell_pay" class="java.lang.Float"/>
+	<field name="inflow_sell_information_Order_id" class="java.lang.Integer"/>
+	<field name="inflow_sell_information_item_code" class="java.lang.String"/>
+	<field name="inflow_sell_information_item_name" class="java.lang.String"/>
+	<field name="inflow_sell_information_quality" class="java.lang.Integer"/>
+	<field name="inflow_sell_information_Amount" class="java.lang.Float"/>
+	<field name="inflow_sell_information_price" class="java.lang.Integer"/>
+	<field name="inflow_sell_information_return_quantity" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="51" y="0" width="504" height="52" forecolor="#FFFFFF" backcolor="#333333" uuid="d5827292-10aa-404e-aec0-789a1428adcd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ashok Ice-cream factory]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="78" height="52" uuid="52c22c34-0ed3-4052-9f14-41b79a5bdb4a"/>
+				<imageExpression><![CDATA["C:\\Users\\Tushar\\Desktop\\Forzon3\\src\\forzon3\\ashoka1.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="216" y="59" width="100" height="20" uuid="3b7009f0-3a11-4690-a8e6-698f716bd475"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Return Bill]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="10" width="100" height="20" uuid="5dbf7c9b-cc75-43d0-963b-842398f66d76"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Order Id.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="10" width="100" height="20" uuid="5b092baa-b659-4146-b8de-706ecaba15cc"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_Order_Id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="5d47d381-dda3-4579-b5ce-7445ad12472d"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Vendor  ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="40" width="100" height="20" uuid="e302633e-fa78-4104-93fd-2a96efe20cc4"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_user_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="10" width="100" height="20" uuid="6d97624a-a03e-48f6-b309-4e6e190d8723"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="425" y="10" width="100" height="20" uuid="e3d3725c-3ab9-4013-bc76-5cc646efe43b"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="79" width="100" height="20" uuid="c73afd69-68f6-44ac-9924-39062335a2fe"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Vendor name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="79" width="100" height="20" uuid="d99aa08e-ec29-4062-b085-6a0f415ddf0c"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="40" width="100" height="20" uuid="51416c2e-4efe-4cea-9d73-194c49d1475e"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Vendor Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="40" width="100" height="20" uuid="a7bca5a2-7c67-4852-a9ad-10b033f20267"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Street Vendor]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="95" width="554" height="4" uuid="bfb560c8-0307-46a0-ac0b-4378b1f0edf7"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="42" forecolor="#00FF33" backcolor="#000000" uuid="cef28aa7-009f-4a09-951e-fef0a3056ea1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="20" y="11" width="70" height="20" forecolor="#00FF33" uuid="ce59df05-fd08-4cbc-9e43-0142fab9486a"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Item code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="11" width="100" height="20" forecolor="#00FF33" uuid="fe6af708-2bdf-48bc-93f0-fd5c757f7519"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="11" width="61" height="20" forecolor="#00FF33" uuid="1f40cbc0-8545-473a-8e42-d211d2571a91"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="11" width="73" height="20" forecolor="#00FF33" uuid="d1914f94-69d6-44d2-8984-0621e4e802da"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Selling Qty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="11" width="100" height="20" forecolor="#00FF33" uuid="b04428d0-e6f9-4662-8d3b-ad18cd5a349c"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Return Qty.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="11" width="77" height="20" forecolor="#00FF33" uuid="d77b92b2-967f-42d6-94a3-5b9564d6a570"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="12" width="51" height="20" uuid="3ab5ac0e-3534-4a3b-a478-e975a6000a4d"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_item_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="12" width="82" height="20" uuid="fff45036-4f31-4779-b933-6ee65b027984"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_item_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="12" width="61" height="20" uuid="ae63ba09-47bb-43c8-ba63-a17250e06135"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="12" width="100" height="20" uuid="15e5d038-cce7-4360-877c-3a0391ccf32b"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_quality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="16" width="100" height="20" uuid="ba583eaf-b62a-46f3-900a-807bb69c8906"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_return_quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="12" width="47" height="20" uuid="fa82dc5a-d59c-4eeb-8f2c-c2ade51ab961"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_information_Amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="10" width="70" height="20" uuid="1a5a25f2-34e0-425a-8670-0307008b971d"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Sum:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="10" width="41" height="20" uuid="8fb7c9b8-c67e-4b5e-8848-e5394fa40a6d"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_Sum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="116" y="10" width="42" height="20" uuid="deeb856d-9231-4eca-9427-536d1db3efe9"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="168" y="10" width="33" height="20" uuid="ca9ca5a4-6f7e-4db0-a488-e5cef60d4335"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="10" width="100" height="20" uuid="30b3927a-817e-4a97-bc73-82ebda65aa24"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Pay:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="266" y="10" width="59" height="20" uuid="486d294c-a13b-4d32-bc02-9ef2acbecff6"/>
+				<textElement>
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inflow_sell_pay}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="0" width="554" height="4" uuid="3232945e-8efe-421b-95d2-b1828bb75434"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="86" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

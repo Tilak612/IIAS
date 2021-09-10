@@ -1,0 +1,152 @@
+  connection();
+        System.out.println(getCurrentDate().toString());
+   String[] md=getCurrentDate().toString().split("-");
+   System.out.println(md[0]);
+   System.out.println(md[1]);
+   System.out.println(md[2]);
+try{
+    int adde=20;
+      pst=con.prepareStatement("SELECT * FROM `graph_sale_month`");
+     rs=pst.executeQuery();
+    int yeae = 0;
+    while(rs.next()){
+    yeae=rs.getInt("Year");
+}
+   if(yeae!= Integer.parseInt(md[0])){
+    
+             connection();
+                pst=con.prepareStatement("INSERT INTO `graph_sale_month`(`Year`, `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");        
+        pst.setInt(1, Integer.parseInt(md[0]));
+        pst.setInt(2, adde);
+        pst.setInt(3, 0);
+        pst.setInt(4, 0);
+        pst.setInt(5, 0);
+        pst.setInt(6, 0);
+        pst.setInt(7, 0);
+        pst.setInt(8, 0);
+        pst.setInt(9, 0);
+        pst.setInt(10, 0);
+        pst.setInt(11, 0);
+        pst.setInt(12, 0);
+        pst.setInt(13, 0);
+            pst.executeUpdate();
+                 JOptionPane.showMessageDialog(this,"Add"); 
+
+   }
+   else{
+                  connection();
+                 pst=con.prepareStatement("SELECT * FROM `graph_sale_month` where Year='"+Integer.parseInt(md[0])+"'");
+    int month=0; 
+       ResultSet rs1=null;
+   Connection  con1=null;
+    PreparedStatement pst1=null;
+           con1=DriverManager.getConnection("jdbc:mysql://localhost:3306/froze","root","");
+    
+      
+    rs=pst.executeQuery();
+   switch(Integer.parseInt(md[1])){  
+       case 1:     
+           while(rs.next()){month=rs.getInt("January");}
+            adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `January`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+           
+           System.out.println("update 1");
+           break;
+       case 2:  
+           while(rs.next()){ month=rs.getInt("February");}
+            adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `February`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+           System.out.println("update 2");
+           break;
+       case 3:            
+            while(rs.next()){month=rs.getInt("March");}
+            adde=adde+month;
+           
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `March`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+      pst1.execute();
+           break;   
+      case 4:   
+           while(rs.next()){month=rs.getInt("April");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `April`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+           System.out.println("update 4");
+           break;
+       case 5:
+            while(rs.next()){month=rs.getInt("May");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `May`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+            System.out.println("update 1");
+           break;
+       case 6:
+           while(rs.next()){  month=rs.getInt("June");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `June`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+           System.out.println("update 1");
+           break;
+        case 7:
+          while(rs.next()){ month=rs.getInt("July"); }
+            adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `July`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+           
+          System.out.println("update 1");
+           break;
+       case 8:
+           while(rs.next()){ month=rs.getInt("August");}
+            adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `August`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+           System.out.println("update 1");
+           break;
+        case 9:
+            while(rs.next()){month=rs.getInt("September");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `September`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+            System.out.println("update 1");
+           break;
+      case 10:
+             while(rs.next()){month=rs.getInt("October");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `October`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+             System.out.println("update 1");
+           break;
+      case 11:
+             while(rs.next()){  month=rs.getInt("November");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `November`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+             System.out.println("update 1");
+           break;
+      case 12:
+             while(rs.next()){  month=rs.getInt("December");}
+             adde=adde+month;
+            pst1=con1.prepareStatement("UPDATE `graph_sale_month` SET `December`="+adde+" WHERE `Year`="+Integer.parseInt(md[0])+";");
+             pst1.execute();
+          
+             System.out.println("update 1");
+           break;
+     
+     
+           
+   }
+       
+   }
+       }
+      catch (Exception ex) {
+      System.out.print(ex);
+      }
